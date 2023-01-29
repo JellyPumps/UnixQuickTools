@@ -62,3 +62,9 @@ fi
 
 # Create json file
 touch $HOME/TMP/tmp.json
+
+# Write to json file
+jq -n --arg Type "$TYPE" --arg Version "$VERS" --arg Name "$NAME" \
+    --arg Comment "$COMM" --arg Exec "$EXEC" --arg Icon "$ICON" \
+    --arg Terminal "$TERM" '{Type: $Type, Version: $Version, Name: $Name, Comment: $Comment, Exec: $Exec, Icon: $Icon, Terminal: $Terminal}' \
+    > "$HOME/TMP/tmp.json"
