@@ -55,4 +55,10 @@ fi
 
 ERROR
 
-# Create temporary JSON file
+# Check of TMP dir
+if [ ! -d "$HOME/TMP" ]; then
+  mkdir "$HOME/TMP"
+fi
+
+# Create json file
+touch $HOME/TMP/tmp.json
