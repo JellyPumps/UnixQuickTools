@@ -33,14 +33,14 @@ fi
 ERROR
 
 # -> Supported image formats
-SUPPORTED_TYPES=("png","svg")
+SUPPORTED_TYPES=(png svg)
 ICON=""
 # -> Check for supported image files
 for file in $TARGETDIR*; do
   if [ -f "$file" ]; then
     filename="$file"
     extension="${filename##*.}"
-    if [[ " ${supported_types[@]} " =~ " $extension " ]]; then
+    if [[ " ${SUPPORTED_TYPES[@]} " =~ " $extension " ]]; then
       ICON="$file"
       break
     fi
