@@ -33,15 +33,14 @@ fi
 ERROR
 
 # -> Supported image formats
-PNG='png'
-SVG='svg'
+SUPPORTED_TYPES=("png","svg")
 ICON=""
 # -> Check for supported image files
 for file in $TARGETDIR*; do
   if [ -f "$file" ]; then
     filename="$file"
     extension="${filename##*.}"
-    if [ "$extension" == $PNG ] || [ "$extension" == $SVG ]; then
+    if [[ " ${supported_types[@]} " =~ " $extension " ]]; then
       ICON="$file"
       break
     fi
@@ -55,3 +54,5 @@ else
 fi
 
 ERROR
+
+# Create temporary JSON file
