@@ -2,8 +2,7 @@
 
 # Base variables
 VARIABLEJS=$1
-DESKENTDIR='/home/sarthak'
-#'/home/sarthak/.local/share/applications'
+DESKENTDIR=$2
 
 # Grab objects & to variables
 function JS2VAR() {
@@ -16,6 +15,7 @@ TERM=$(JS2VAR '.term')
 EXEC=$(JS2VAR '.exec')
 NAME=$(JS2VAR '.name')
 ICON=$(JS2VAR '.icon')
+COMM=$(JS2VAR '.comm')
 
 # Create .desktop file
 NDESK=$DESKENTDIR/$NAME.desktop
@@ -23,10 +23,11 @@ echo '[DESKTOP ENTRY]'>$NDESK
 
 # Write to .desktop file
 echo "Encoding=UTF-8">>$NDESK
-echo "Version=$VERS">>$NDESK
 echo "Type=$TYPE">>$NDESK
+echo "Version=$VERS">>$NDESK
+echo "Name=$NAME">>$NDESK
+echo "Comment=$COMM">>$NDESK
 echo "Terminal=$TERM">>$NDESK
 echo "Exec=$EXEC">>$NDESK
-echo "Name=$NAME">>$NDESK
 echo "Icon=$ICON">>$NDESK
 
